@@ -1,3 +1,4 @@
+import 'package:best_self/UI/pages/home/widgets/date_wigget.dart';
 import 'package:calendar_timeline/calendar_timeline.dart';
 import 'package:flutter/material.dart';
 
@@ -6,23 +7,38 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Home Page'),
+        title: const Text('Hey, CRISTIAN!'),
       ),
-      body: CalendarTimeline(
-        initialDate: DateTime.now(),
-        firstDate: DateTime(2024, 1, 15),
-        lastDate: DateTime(2024, 12, 20),
-        onDateSelected: (date) => print(date),
-        leftMargin: 20,
-        monthColor: Colors.blueGrey,
-        dayColor: Colors.teal[200],
-        activeDayColor: Colors.white,
-        activeBackgroundDayColor: Colors.redAccent[100],
-        selectableDayPredicate: (date) => date.day >= DateTime.now().day,
-        locale: 'en_ISO',
-        height: MediaQuery.of(context).size.height * 0.3,
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                DateWigget(mounth: 'JAN', day: '01'),
+                DateWigget(mounth: 'JAN', day: '02'),
+                DateWigget(mounth: 'JAN', day: '03', isSelected: true),
+                DateWigget(mounth: 'JAN', day: '04'),
+                DateWigget(mounth: 'JAN', day: '05'),
+                DateWigget(mounth: 'JAN', day: '06'),
+                DateWigget(mounth: 'JAN', day: '07'),
+              ],
+            ),
+            Container(
+              height: size.height * 0.3,
+              color: Colors.red,
+            ),
+            Container(
+              height: size.height * 0.6,
+              color: Colors.blue,
+            )
+          ],
+        ),
       ),
     );
   }
