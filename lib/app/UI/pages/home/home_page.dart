@@ -2,6 +2,7 @@ import 'package:best_self/app/UI/pages/home/widgets/mascota_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/habit_controller.dart';
+import '../custom-habits/custom_habits.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -31,7 +32,9 @@ class HomePage extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          showHabitForm(context, size);
+        },
         child: const Icon(Icons.add),
       ),
       floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
@@ -112,8 +115,8 @@ class MultiParablePainter extends CustomPainter {
 
     final initialPointY = size.height * 1;
 
-    final controlPointX1 = size.width*0.5;
-    final controlPointY1 = size.width*0.3;
+    final controlPointX1 = size.width * 0.5;
+    final controlPointY1 = size.width * 0.3;
 
     final path = Path()
       ..lineTo(0, initialPointY)
