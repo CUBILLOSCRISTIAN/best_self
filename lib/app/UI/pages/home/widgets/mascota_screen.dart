@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 class MascotaScreen extends StatefulWidget {
@@ -28,7 +29,8 @@ class _MascotaScreenState extends State<MascotaScreen> {
 
   @override
   void dispose() {
-    _typingTimer?.cancel(); // Cancela el temporizador cuando el widget se destruye
+    _typingTimer
+        ?.cancel(); // Cancela el temporizador cuando el widget se destruye
     super.dispose();
   }
 
@@ -63,7 +65,8 @@ class _MascotaScreenState extends State<MascotaScreen> {
           _charIndex++;
         });
       } else {
-        timer.cancel(); // Termina el efecto de escribir cuando completa el mensaje
+        timer
+            .cancel(); // Termina el efecto de escribir cuando completa el mensaje
       }
     });
   }
@@ -76,15 +79,6 @@ class _MascotaScreenState extends State<MascotaScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // Mascota
-        Positioned(
-          bottom: 0,
-          left: 0,
-          child: Image.asset(
-            'assets/pet/panda_home.png',
-            width: screenWidth * 0.5,
-          ),
-        ),
         // Globo de diálogo
         Positioned(
           top: screenHeight * 0.02,
@@ -109,6 +103,18 @@ class _MascotaScreenState extends State<MascotaScreen> {
                 color: Colors.black,
               ),
               textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        // Mascota
+        Positioned(
+          bottom: 0,
+          left: 0,
+          child: FadeInLeft(
+            duration: const Duration(seconds: 1),
+            child: Image.asset(
+              'assets/pet/panda_home.png',
+              width: screenWidth * 0.55,
             ),
           ),
         ),
