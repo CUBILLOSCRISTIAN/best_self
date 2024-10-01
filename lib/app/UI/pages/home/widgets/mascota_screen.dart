@@ -28,7 +28,8 @@ class _MascotaScreenState extends State<MascotaScreen> {
 
   @override
   void dispose() {
-    _typingTimer?.cancel(); // Cancela el temporizador cuando el widget se destruye
+    _typingTimer
+        ?.cancel(); // Cancela el temporizador cuando el widget se destruye
     super.dispose();
   }
 
@@ -63,7 +64,8 @@ class _MascotaScreenState extends State<MascotaScreen> {
           _charIndex++;
         });
       } else {
-        timer.cancel(); // Termina el efecto de escribir cuando completa el mensaje
+        timer
+            .cancel(); // Termina el efecto de escribir cuando completa el mensaje
       }
     });
   }
