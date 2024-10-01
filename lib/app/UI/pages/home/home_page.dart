@@ -2,6 +2,7 @@ import 'package:best_self/app/UI/pages/home/widgets/mascota_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/habit_controller.dart';
+import 'widgets/daily_widget.dart';
 import '../custom-habits/custom_habits.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,6 +18,7 @@ class HomePage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              const DailyPage(),
               _CustomBackground(size: size),
               Padding(
                 padding: const EdgeInsets.all(16.0),

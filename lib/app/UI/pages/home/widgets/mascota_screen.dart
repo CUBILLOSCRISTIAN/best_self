@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
 class MascotaScreen extends StatefulWidget {
@@ -78,15 +79,6 @@ class _MascotaScreenState extends State<MascotaScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // Mascota
-        Positioned(
-          bottom: 0,
-          left: 0,
-          child: Image.asset(
-            'assets/pet/panda_home.png',
-            width: screenWidth * 0.5,
-          ),
-        ),
         // Globo de diálogo
         Positioned(
           top: screenHeight * 0.02,
@@ -111,6 +103,18 @@ class _MascotaScreenState extends State<MascotaScreen> {
                 color: Colors.black,
               ),
               textAlign: TextAlign.center,
+            ),
+          ),
+        ),
+        // Mascota
+        Positioned(
+          bottom: 0,
+          left: 0,
+          child: FadeInLeft(
+            duration: const Duration(seconds: 1),
+            child: Image.asset(
+              'assets/pet/panda_home.png',
+              width: screenWidth * 0.55,
             ),
           ),
         ),
