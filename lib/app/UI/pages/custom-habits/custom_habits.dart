@@ -30,13 +30,8 @@ void showHabitForm(BuildContext context, Size size) {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.end,
                       children: [
-                        const Text(
-                          'Crea tu nuevo habito',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
                         IconButton(
                           icon: const Icon(Icons.close),
                           onPressed: () {
@@ -44,6 +39,14 @@ void showHabitForm(BuildContext context, Size size) {
                           },
                         ),
                       ],
+                    ),
+                    const Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        'Crea tu nuevo habito',
+                        style: TextStyle(
+                            fontSize: 24, fontWeight: FontWeight.bold),
+                      ),
                     ),
                     TextField(
                       controller: habitController,
