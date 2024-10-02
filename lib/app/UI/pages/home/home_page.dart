@@ -7,7 +7,6 @@ import '../../widgets/botton_navigation_bar.dart';
 import '../../widgets/habit_card.dart';
 import 'widgets/daily_widget.dart';
 
-
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
@@ -24,6 +23,7 @@ class HomePage extends StatelessWidget {
           child: Stack(
             children: [
               SingleChildScrollView(
+                physics: const ClampingScrollPhysics(), // Added this line
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
                           const PrimaryTitle(),
                           HabitList(),
                           SizedBox(
-                            height:  size.height * 0.06,
+                            height: size.height * 0.06,
                           )
                         ],
                       ),
@@ -52,8 +52,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-  
 }
 
 class _CustomBackground extends StatelessWidget {
@@ -96,7 +94,6 @@ class MultiParablePainter extends CustomPainter {
     final brush = Paint()..color = color;
 
     final initialPointY = size.height * 1;
-
 
     final path = Path()
       ..lineTo(0, initialPointY)
@@ -154,23 +151,44 @@ class HabitList extends StatelessWidget {
     final habits = _habitController.habits;
     print(_habitController.habits);
 
-    return Obx(
-      () => ListView.builder(
-        shrinkWrap: true,
-        physics: const NeverScrollableScrollPhysics(),
-        itemCount: habits.length,
-        itemBuilder: (context, index) {
-          return HabitCard(
-            title: habits[index].title,
-            subtitle: "Esto es una prueba",
-            isCompleted: habits[index].isCompleted,
-            icon: habits[index].icon,
-            numeroDeVeces: habits[index].numeroDeVeces,
-          );
-        },
-      ),
-    );
+    if (habits.isEmpty) {
+      return const Padding(
+        padding: EdgeInsets.only(top: 160.0),
+        child: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+          Text(
+            'Crea tu primer hábito',
+            style: TextStyle(fontSize: 18, color: Colors.grey),
+          ),
+          SizedBox(height: 10),
+          Icon(
+            Icons.arrow_downward,
+            color: Colors.grey,
+            size: 24,
+          ),
+          ],
+        ),
+        ),
+      );
+    } else {
+      return Obx(
+        () => ListView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          itemCount: habits.length,
+          itemBuilder: (context, index) {
+            return HabitCard(
+              title: habits[index].title,
+              subtitle: "Esto es una prueba",
+              isCompleted: habits[index].isCompleted,
+              icon: habits[index].icon,
+              numeroDeVeces: habits[index].numeroDeVeces,
+            );
+          },
+        ),
+      );
+    }
   }
 }
-
-
