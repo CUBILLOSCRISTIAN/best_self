@@ -122,19 +122,33 @@ class PrimaryTitle extends StatelessWidget {
   const PrimaryTitle({
     super.key,
   });
-
   @override
   Widget build(BuildContext context) {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           "Monitorea",
-          style: TextStyle(fontSize: 16, color: Colors.grey),
+          style: TextStyle(
+            fontSize: 16,
+            color: Colors.grey.shade600,
+            fontStyle: FontStyle.italic,
+          ),
         ),
         Text(
-          "tus habitos",
-          style: TextStyle(fontSize: 60, fontWeight: FontWeight.bold),
+          "tus hábitos",
+          style: TextStyle(
+            fontSize: 60,
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).primaryColor,
+            shadows: const [
+              Shadow(
+                blurRadius: 10.0,
+                color: Colors.black45,
+                offset: Offset(2.0, 2.0),
+              ),
+            ],
+          ),
         ),
       ],
     );
@@ -148,33 +162,32 @@ class HabitList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final habits = _habitController.habits;
-    print(_habitController.habits);
+    return Obx(() {
+      final habits = _habitController.habits;
 
-    if (habits.isEmpty) {
-      return const Padding(
-        padding: EdgeInsets.only(top: 160.0),
-        child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-          Text(
-            'Crea tu primer hábito',
-            style: TextStyle(fontSize: 18, color: Colors.grey),
+      if (habits.isEmpty) {
+        return const Padding(
+          padding: EdgeInsets.only(top: 160.0),
+          child: Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  'Crea tu primer hábito',
+                  style: TextStyle(fontSize: 18, color: Colors.grey),
+                ),
+                SizedBox(height: 10),
+                Icon(
+                  Icons.arrow_downward,
+                  color: Colors.grey,
+                  size: 24,
+                ),
+              ],
+            ),
           ),
-          SizedBox(height: 10),
-          Icon(
-            Icons.arrow_downward,
-            color: Colors.grey,
-            size: 24,
-          ),
-          ],
-        ),
-        ),
-      );
-    } else {
-      return Obx(
-        () => ListView.builder(
+        );
+      } else {
+        return ListView.builder(
           shrinkWrap: true,
           physics: const NeverScrollableScrollPhysics(),
           itemCount: habits.length,
@@ -187,8 +200,8 @@ class HabitList extends StatelessWidget {
               numeroDeVeces: habits[index].numeroDeVeces,
             );
           },
-        ),
-      );
-    }
+        );
+      }
+    });
   }
 }

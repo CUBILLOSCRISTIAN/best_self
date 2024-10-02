@@ -27,10 +27,11 @@ AppBar appBarHome(Color color) {
       ),
       centerTitle: false,
       actions: [
-        IconButton.outlined(
+        const Text('0', style: TextStyle(fontSize: 20, color: Colors.white)),
+        IconButton(
           onPressed: () {},
-          icon: const Icon(Icons.add),
-        )
+          icon: const Icon(Icons.monetization_on, color: Colors.white),
+        ),
       ],
     );
   }

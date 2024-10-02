@@ -35,21 +35,30 @@ class HabitCard extends StatelessWidget {
             Icon(icon),
           ],
         ),
-        title: Text(title),
-        subtitle: Text(subtitle ?? ""),
+        title: Text(title,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+        subtitle: isCompleted
+            ? Row(
+                children: [
+                  Icon(Icons.check_circle, color: color.primaryColor),
+                  const SizedBox(width: 5),
+                  const Text('Completado'),
+                ],
+              )
+            : Row(
+                children: [
+                  Icon(Icons.info_outline_rounded, color: color.primaryColor),
+                  const SizedBox(width: 5),
+                  Text('1 de $numeroDeVeces completados'),
+                ],
+              ),
         trailing: Row(
           mainAxisSize: MainAxisSize.min,
           children: [
             IconButton(
-              icon: const Icon(Icons.remove_circle_outline),
-              onPressed: () {
-                // Aquí puedes agregar la lógica para restar
-              },
-            ),
-            Text(
-              '$numeroDeVeces', // Aquí puedes mostrar el valor de la variable
-              style: const TextStyle(fontSize: 16),
-            ),
+                onPressed: () {},
+                icon: Icon(Icons.add_circle_outline_outlined,
+                    color: color.primaryColor)),
           ],
         ),
       ),
