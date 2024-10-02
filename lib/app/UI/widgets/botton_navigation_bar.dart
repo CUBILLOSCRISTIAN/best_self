@@ -43,7 +43,7 @@ class BottonNavigationBarCustomer extends StatelessWidget {
                 IconButton(
                   icon: const Icon(Icons.home),
                   onPressed: () {},
-                  color: Colors.white,
+                  color: theme.unselectedWidgetColor,
                 ),
                 IconButton(
                   icon: const Icon(Icons.shopping_cart),

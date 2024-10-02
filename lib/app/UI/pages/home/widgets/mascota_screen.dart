@@ -8,14 +8,12 @@ class MascotaScreen extends StatefulWidget {
 }
 
 class _MascotaScreenState extends State<MascotaScreen> {
-  // Lista de mensajes que queremos mostrar
   final List<String> _messages = [
     '¡Sigue adelante, lo estás haciendo genial!',
     'Recuerda que cada paso cuenta.',
     '¡Estás muy cerca de alcanzar tu meta!',
   ];
 
-  // Controlador del texto actual para el efecto de máquina de escribir
   String _currentText = '';
   int _messageIndex = 0;
   int _charIndex = 0;
@@ -29,44 +27,42 @@ class _MascotaScreenState extends State<MascotaScreen> {
 
   @override
   void dispose() {
-    _typingTimer
-        ?.cancel(); // Cancela el temporizador cuando el widget se destruye
+    _typingTimer?.cancel();
     super.dispose();
   }
 
-  // Función para iniciar el stream de mensajes
   void _startMessageStream() {
-    // Cambia el mensaje cada 5 segundos
     Stream.periodic(Duration(seconds: 10)).listen((_) {
-      _changeMessage();
+      if (mounted) {
+        _changeMessage();
+      }
     });
-    _changeMessage(); // Inicializa con el primer mensaje
+    _changeMessage();
   }
 
-  // Cambiar al siguiente mensaje
   void _changeMessage() {
     if (_messageIndex >= _messages.length) {
-      _messageIndex = 0; // Reinicia si se pasa del último mensaje
+      _messageIndex = 0;
     }
-    _charIndex = 0; // Reinicia el índice del carácter
-    _currentText = ''; // Vacía el texto actual
+    _charIndex = 0;
+    _currentText = '';
     _startTypingEffect(_messages[_messageIndex]);
     _messageIndex++;
   }
 
-  // Efecto de máquina de escribir
   void _startTypingEffect(String message) {
-    _typingTimer?.cancel(); // Cancela el temporizador anterior si existe
+    _typingTimer?.cancel();
 
     _typingTimer = Timer.periodic(Duration(milliseconds: 100), (Timer timer) {
       if (_charIndex < message.length) {
-        setState(() {
-          _currentText += message[_charIndex]; // Agrega un carácter
-          _charIndex++;
-        });
+        if (mounted) {
+          setState(() {
+            _currentText += message[_charIndex];
+            _charIndex++;
+          });
+        }
       } else {
-        timer
-            .cancel(); // Termina el efecto de escribir cuando completa el mensaje
+        timer.cancel();
       }
     });
   }
@@ -79,7 +75,6 @@ class _MascotaScreenState extends State<MascotaScreen> {
     return Stack(
       alignment: Alignment.center,
       children: [
-        // Globo de diálogo
         Positioned(
           top: screenHeight * 0.02,
           right: screenWidth * 0.01,
@@ -106,7 +101,6 @@ class _MascotaScreenState extends State<MascotaScreen> {
             ),
           ),
         ),
-        // Mascota
         Positioned(
           bottom: 0,
           left: 0,
