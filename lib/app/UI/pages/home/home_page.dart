@@ -2,6 +2,7 @@ import 'package:best_self/app/UI/pages/home/widgets/mascota_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/habit_controller.dart';
+import '../../widgets/botton_navigation_bar.dart';
 import 'widgets/daily_widget.dart';
 import '../custom-habits/custom_habits.dart';
 
@@ -14,32 +15,36 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: appBarHome(Theme.of(context).primaryColor),
       body: SafeArea(
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+        bottom: false,
+        child: SizedBox(
+          height: size.height,
+          width: size.width,
+          child: Stack(
             children: [
-              const DailyPage(),
-              _CustomBackground(size: size),
-              Padding(
-                padding: const EdgeInsets.all(16.0),
+              SingleChildScrollView(
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const PrimaryTitle(),
-                    HabitList(),
+                    const DailyPage(),
+                    _CustomBackground(size: size),
+                    Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          const PrimaryTitle(),
+                          HabitList(),
+                        ],
+                      ),
+                    ),
                   ],
                 ),
               ),
+              Positioned(
+                  bottom: 0, left: 0, child: BottonNavigationBarCustomer())
             ],
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          showHabitForm(context, size);
-        },
-        child: const Icon(Icons.add),
-      ),
-      floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
     );
   }
 
@@ -117,18 +122,21 @@ class MultiParablePainter extends CustomPainter {
 
     final initialPointY = size.height * 1;
 
-    final controlPointX1 = size.width * 0.5;
-    final controlPointY1 = size.width * 0.3;
 
     final path = Path()
       ..lineTo(0, initialPointY)
-      ..quadraticBezierTo(
-        controlPointX1,
-        controlPointY1,
+      ..cubicTo(
+        0,
+        size.height / 2,
         size.width,
-        initialPointY,
+        size.height,
+        size.width,
+        size.height / 2,
       )
-      ..lineTo(size.width, 0)
+      ..lineTo(
+        size.width,
+        0,
+      )
       ..close();
 
     canvas.drawPath(path, brush);
@@ -176,12 +184,15 @@ class HabitList extends StatelessWidget {
     return Obx(
       () => ListView.builder(
         shrinkWrap: true,
+        physics: const NeverScrollableScrollPhysics(),
         itemCount: habits.length,
         itemBuilder: (context, index) {
           return HabitCard(
             title: habits[index].title,
             subtitle: "Esto es una prueba",
             isCompleted: habits[index].isCompleted,
+            icon: habits[index].icon,
+            numeroDeVeces: habits[index].numeroDeVeces,
           );
         },
       ),
@@ -193,12 +204,16 @@ class HabitCard extends StatelessWidget {
   final String title;
   final String? subtitle;
   final bool isCompleted;
+  final IconData icon;
+  final int numeroDeVeces;
 
   const HabitCard({
     super.key,
     required this.title,
     this.subtitle,
     required this.isCompleted,
+    required this.icon,
+    required this.numeroDeVeces,
   });
 
   @override
@@ -208,12 +223,35 @@ class HabitCard extends StatelessWidget {
       color: color.hoverColor,
       elevation: 0,
       child: ListTile(
-        leading: const Icon(Icons.air_sharp),
+        leading: Stack(
+          alignment: Alignment.center,
+          children: [
+            CircularProgressIndicator(
+              value: isCompleted ? 0.6 : 0.0,
+              backgroundColor: Colors.grey,
+              valueColor: AlwaysStoppedAnimation<Color>(
+                  isCompleted ? Colors.green : Colors.red),
+            ),
+            Icon(icon),
+          ],
+        ),
         title: Text(title),
         subtitle: Text(subtitle ?? ""),
-        trailing: isCompleted
-            ? const Icon(Icons.check_circle, color: Colors.green)
-            : const Icon(Icons.circle_outlined),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            IconButton(
+              icon: const Icon(Icons.remove_circle_outline),
+              onPressed: () {
+                // Aquí puedes agregar la lógica para restar
+              },
+            ),
+            Text(
+              '$numeroDeVeces', // Aquí puedes mostrar el valor de la variable
+              style: const TextStyle(fontSize: 16),
+            ),
+          ],
+        ),
       ),
     );
   }

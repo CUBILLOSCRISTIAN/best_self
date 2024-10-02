@@ -6,7 +6,8 @@ extension HabitMapper on Habit {
     return HabitEntity(
       id: id,
       title: title,
-      time: time,
+      icon: icon,
+      numeroDeVeces: numeroDeVeces,
       isCompleted: isCompleted,
     );
   }

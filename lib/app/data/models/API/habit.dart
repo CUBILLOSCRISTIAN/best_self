@@ -1,27 +1,33 @@
+import 'package:flutter/material.dart';
+
 class Habit {
   final String id;
   final String title;
-  final DateTime time;
+  final IconData icon;
+  final int numeroDeVeces;
   final bool isCompleted;
 
   Habit({
     required this.id,
     required this.title,
-    required this.time,
+    required this.icon,
+    required this.numeroDeVeces,
     required this.isCompleted,
   });
 
   factory Habit.fromJson(Map<String, dynamic> json) => Habit(
         id: json["id"],
         title: json["title"],
-        time: DateTime.parse(json["time"]),
+        icon: IconData(json['icon'], fontFamily: 'MaterialIcons'),
+        numeroDeVeces: json["numeroDeVeces"],
         isCompleted: json["isCompleted"],
       );
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "title": title,
-        "time": time.toIso8601String(),
+        "icon": icon,
+        "numeroDeVeces": numeroDeVeces,
         "isCompleted": isCompleted,
       };
 }
