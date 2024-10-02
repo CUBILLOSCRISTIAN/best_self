@@ -2,9 +2,11 @@ import 'package:best_self/app/UI/pages/home/widgets/mascota_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/habit_controller.dart';
+import '../../widgets/app_bar.dart';
 import '../../widgets/botton_navigation_bar.dart';
+import '../../widgets/habit_card.dart';
 import 'widgets/daily_widget.dart';
-import '../custom-habits/custom_habits.dart';
+
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -33,6 +35,9 @@ class HomePage extends StatelessWidget {
                         children: [
                           const PrimaryTitle(),
                           HabitList(),
+                          SizedBox(
+                            height:  size.height * 0.06,
+                          )
                         ],
                       ),
                     ),
@@ -48,37 +53,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  AppBar appBarHome(Color color) {
-    return AppBar(
-      backgroundColor: color,
-      leading: const Padding(
-        padding: EdgeInsets.all(5.0),
-        child: CircleAvatar(
-          backgroundImage: NetworkImage(
-              "https://avatars.githubusercontent.com/u/583231?v=4"),
-        ),
-      ),
-      title: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            "Hello,",
-            style: TextStyle(fontSize: 15),
-          ),
-          Text(
-            "John Doe",
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-        ],
-      ),
-      actions: [
-        IconButton.outlined(
-          onPressed: () {},
-          icon: const Icon(Icons.add),
-        )
-      ],
-    );
-  }
+  
 }
 
 class _CustomBackground extends StatelessWidget {
@@ -170,8 +145,6 @@ class PrimaryTitle extends StatelessWidget {
 }
 
 class HabitList extends StatelessWidget {
-  final List<String> habits = ["Shopping", "Cycling", "Read a book"];
-
   final HabitController _habitController = Get.find();
 
   HabitList({super.key});
@@ -200,59 +173,4 @@ class HabitList extends StatelessWidget {
   }
 }
 
-class HabitCard extends StatelessWidget {
-  final String title;
-  final String? subtitle;
-  final bool isCompleted;
-  final IconData icon;
-  final int numeroDeVeces;
 
-  const HabitCard({
-    super.key,
-    required this.title,
-    this.subtitle,
-    required this.isCompleted,
-    required this.icon,
-    required this.numeroDeVeces,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final color = Theme.of(context);
-    return Card(
-      color: color.hoverColor,
-      elevation: 0,
-      child: ListTile(
-        leading: Stack(
-          alignment: Alignment.center,
-          children: [
-            CircularProgressIndicator(
-              value: isCompleted ? 0.6 : 0.0,
-              backgroundColor: Colors.grey,
-              valueColor: AlwaysStoppedAnimation<Color>(
-                  isCompleted ? Colors.green : Colors.red),
-            ),
-            Icon(icon),
-          ],
-        ),
-        title: Text(title),
-        subtitle: Text(subtitle ?? ""),
-        trailing: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            IconButton(
-              icon: const Icon(Icons.remove_circle_outline),
-              onPressed: () {
-                // Aquí puedes agregar la lógica para restar
-              },
-            ),
-            Text(
-              '$numeroDeVeces', // Aquí puedes mostrar el valor de la variable
-              style: const TextStyle(fontSize: 16),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-}

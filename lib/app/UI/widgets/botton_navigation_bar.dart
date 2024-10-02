@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../pages/custom-habits/custom_habits.dart';
 
@@ -46,7 +47,9 @@ class BottonNavigationBarCustomer extends StatelessWidget {
                 ),
                 IconButton(
                   icon: const Icon(Icons.shopping_cart),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed('/shop');
+                  },
                   color: Colors.white,
                 ),
                 Container(
