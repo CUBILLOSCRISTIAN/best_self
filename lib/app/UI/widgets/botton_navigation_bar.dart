@@ -1,7 +1,6 @@
+import 'package:best_self/app/UI/pages/create_habit/create_habit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../pages/custom-habits/custom_habits.dart';
 
 class BottonNavigationBarCustomer extends StatelessWidget {
   BottonNavigationBarCustomer({super.key});
@@ -26,7 +25,7 @@ class BottonNavigationBarCustomer extends StatelessWidget {
                   side: BorderSide(color: theme.primaryColor, width: 1.0),
                 ),
                 onPressed: () {
-                  showHabitForm(context, size);
+                  openHabitForm(context, size);
                 },
                 backgroundColor: theme.indicatorColor,
                 child: Icon(
