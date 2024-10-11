@@ -1,6 +1,6 @@
 import 'package:best_self/app/domain/entities/habit.dart';
 
-import '../../database/database_habit.dart';
+import '../database/database_habit.dart';
 import 'i_local_habit_source.dart';
 
 class LocalHabitSource implements ILocalHabitSource {

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../domain/entities/habit.dart';
+import '../../domain/entities/habit.dart';
 
 List<HabitEntity> habitDatabase = [
   const HabitEntity(

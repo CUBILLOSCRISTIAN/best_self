@@ -11,8 +11,8 @@ class HabitRepositoryImpl implements IHabitRepository {
 
   @override
   Future<void> addHabit(HabitEntity habit) {
-    // TODO: implement addHabit
-    throw UnimplementedError();
+    localHabitSource.createHabit(habit);
+    return Future.value();
   }
 
   @override

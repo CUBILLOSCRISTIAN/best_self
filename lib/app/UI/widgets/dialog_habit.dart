@@ -1,7 +1,12 @@
+import 'package:best_self/app/UI/controllers/habit_controller.dart';
+import 'package:best_self/app/data/models/API/habit.dart';
+import 'package:best_self/app/domain/entities/habit.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DialogHabit extends StatefulWidget {
-  const DialogHabit({super.key});
+  final HabitEntity habit;
+  const DialogHabit({super.key, required this.habit});
 
   @override
   State<DialogHabit> createState() => _DialogHabitState();
@@ -52,14 +57,21 @@ class _DialogHabitState extends State<DialogHabit> {
       actions: [
         TextButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            Get.back();
           },
           child: const Text('Cancelar'),
         ),
         ElevatedButton(
           onPressed: () {
-            // Aquí puedes manejar la lógica para guardar el hábito con la cantidad de veces al día
-            Navigator.of(context).pop();
+            // Aquí puedes manejar la lógica para guardar el hábito con la cantidad de veces al día usando el controlador
+            final habitController = Get.find<HabitController>();
+            habitController.createHabit(HabitEntity(
+              icon: widget.habit.icon,
+              id: widget.habit.id,
+              title: widget.habit.title,
+              numeroDeVeces: timesPerDay,
+            ));
+            Get.offAllNamed('/home');
             print('Hábito seleccionado, veces al día: $timesPerDay');
           },
           child: const Text('Crear'),

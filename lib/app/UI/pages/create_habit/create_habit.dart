@@ -184,9 +184,11 @@ void openHabitForm(BuildContext context, Size size) {
                               showDialog(
                                 context: context,
                                 builder: (BuildContext context) {
-                                  return const DialogHabit();
-                                },
-                              );
+                                  final selectedHabit = habitController.predefinedHabits[selectedHabitIndex!];
+                                  return DialogHabit(habit: selectedHabit);
+                                });
+                                
+                              
                               print('Hábito predefinido seleccionado');
                             }
                           },
