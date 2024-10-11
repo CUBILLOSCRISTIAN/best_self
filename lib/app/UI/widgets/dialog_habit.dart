@@ -1,5 +1,4 @@
 import 'package:best_self/app/UI/controllers/habit_controller.dart';
-import 'package:best_self/app/data/models/API/habit.dart';
 import 'package:best_self/app/domain/entities/habit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -65,14 +64,15 @@ class _DialogHabitState extends State<DialogHabit> {
           onPressed: () {
             // Aquí puedes manejar la lógica para guardar el hábito con la cantidad de veces al día usando el controlador
             final habitController = Get.find<HabitController>();
-            habitController.createHabit(HabitEntity(
-              icon: widget.habit.icon,
-              id: widget.habit.id,
-              title: widget.habit.title,
-              numeroDeVeces: timesPerDay,
-            ));
+            habitController.createHabit(
+              HabitEntity(
+                icon: widget.habit.icon,
+                id: widget.habit.id,
+                title: widget.habit.title,
+                numeroDeVeces: timesPerDay,
+              ),
+            );
             Get.offAllNamed('/home');
-            print('Hábito seleccionado, veces al día: $timesPerDay');
           },
           child: const Text('Crear'),
         ),

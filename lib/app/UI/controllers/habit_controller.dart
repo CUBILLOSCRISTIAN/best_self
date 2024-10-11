@@ -32,4 +32,12 @@ class HabitController extends GetxController {
   void createHabit(HabitEntity habit) {
     habitUseCase.addHabit(habit).then((_) => getHabits());
   }
+
+  void incrementarVecesCompletadas(HabitEntity habit) {
+    habit.numeroDeVecesCompletadas++;
+    if( habit.numeroDeVecesCompletadas == habit.numeroDeVeces){
+      habit.isCompleted = true;
+    }
+    habitUseCase.updateHabit(habit).then((_) => getHabits());
+  }
 }

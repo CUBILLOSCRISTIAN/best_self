@@ -23,7 +23,9 @@ class HabitSelectionWidget extends StatefulWidget {
   });
 
   @override
-  _HabitSelectionWidgetState createState() => _HabitSelectionWidgetState();
+  _HabitSelectionWidgetState createState() {
+    return _HabitSelectionWidgetState();
+  }
 }
 
 class _HabitSelectionWidgetState extends State<HabitSelectionWidget> {
@@ -177,7 +179,11 @@ void openHabitForm(BuildContext context, Size size) {
                           onPressed: selectedHabitIndex == null ? null : () {
                             if (selectedHabitIndex == habitController.predefinedHabits.length) {
                               // Acción para "Personalizado"
-                              showHabitForm(context, size);
+                              showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return CustomHabit();
+                                });
                               print('Personalizado seleccionado');
                             } else {
                               // Acción para otros hábitos
@@ -187,8 +193,6 @@ void openHabitForm(BuildContext context, Size size) {
                                   final selectedHabit = habitController.predefinedHabits[selectedHabitIndex!];
                                   return DialogHabit(habit: selectedHabit);
                                 });
-                                
-                              
                               print('Hábito predefinido seleccionado');
                             }
                           },

@@ -193,11 +193,7 @@ class HabitList extends StatelessWidget {
           itemCount: habits.length,
           itemBuilder: (context, index) {
             return HabitCard(
-              title: habits[index].title,
-              subtitle: "Esto es una prueba",
-              isCompleted: habits[index].isCompleted,
-              icon: habits[index].icon,
-              numeroDeVeces: habits[index].numeroDeVeces,
+              habit: habits[index],
             );
           },
         );

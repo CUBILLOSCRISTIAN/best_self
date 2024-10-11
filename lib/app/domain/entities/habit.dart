@@ -4,10 +4,11 @@ class HabitEntity {
   final IconData icon;
   final String title;
   final int numeroDeVeces;
-  final bool isCompleted;
   final String id;
+  bool isCompleted;
+  int numeroDeVecesCompletadas = 0;
 
-  const HabitEntity({
+  HabitEntity({
     required this.icon,
     required this.id,
     required this.title,

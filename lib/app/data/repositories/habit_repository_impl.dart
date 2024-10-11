@@ -28,8 +28,11 @@ class HabitRepositoryImpl implements IHabitRepository {
 
   @override
   Future<void> updateHabit(HabitEntity habit) {
-    // TODO: implement updateHabit
-    throw UnimplementedError();
+    localHabitSource.updateHabit(habit);
+    if(habit.numeroDeVecesCompletadas == habit.numeroDeVeces){
+      
+    }
+    return Future.value();
   }
 
   Future<List<HabitEntity>> getPredefinedHabits() {
