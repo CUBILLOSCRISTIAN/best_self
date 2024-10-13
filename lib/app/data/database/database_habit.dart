@@ -3,12 +3,6 @@ import 'package:flutter/material.dart';
 import '../../domain/entities/habit.dart';
 
 List<HabitEntity> habitDatabase = [
-  HabitEntity(
-    icon: Icons.fitness_center,
-    id: '1',
-    title: 'Exercise',
-    numeroDeVeces: 3,
-  ),
 ];
 
 List<HabitEntity> predefinedHabits = [

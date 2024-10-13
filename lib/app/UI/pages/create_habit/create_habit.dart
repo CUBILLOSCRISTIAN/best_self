@@ -184,7 +184,7 @@ void openHabitForm(BuildContext context, Size size) {
                                 builder: (BuildContext context) {
                                   return CustomHabit();
                                 });
-                              print('Personalizado seleccionado');
+                              
                             } else {
                               // Acción para otros hábitos
                               showDialog(
@@ -193,7 +193,6 @@ void openHabitForm(BuildContext context, Size size) {
                                   final selectedHabit = habitController.predefinedHabits[selectedHabitIndex!];
                                   return DialogHabit(habit: selectedHabit);
                                 });
-                              print('Hábito predefinido seleccionado');
                             }
                           },
                           style: ElevatedButton.styleFrom(
