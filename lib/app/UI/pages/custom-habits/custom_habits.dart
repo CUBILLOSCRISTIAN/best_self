@@ -32,7 +32,7 @@ class _CustomHabitState extends State<CustomHabit> {
 
     if (icon != null) {
       setState(() {
-        selectedIcon = icon as IconData;
+        selectedIcon = icon.data;
       });
     }
   }
