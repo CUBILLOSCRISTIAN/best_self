@@ -1,3 +1,4 @@
+import 'package:best_self/app/UI/controllers/user_controller.dart';
 import 'package:best_self/app/domain/entities/habit.dart';
 import 'package:get/get.dart';
 
@@ -13,6 +14,8 @@ class HabitController extends GetxController {
   var completionPercentage = 1.0.obs;
 
   HabitController(this.habitUseCase);
+
+  UserController userController = Get.find<UserController>();
 
   @override
   void onInit() {
@@ -37,6 +40,8 @@ class HabitController extends GetxController {
     habit.numeroDeVecesCompletadas++;
     if( habit.numeroDeVecesCompletadas == habit.numeroDeVeces){
       habit.isCompleted = true;
+      userController.incrementHabits();
+      userController.addCoins(5);
     }
     habitUseCase.updateHabit(habit).then((_) => getHabits());
   }

@@ -1,6 +1,8 @@
 import 'dart:ui';
 
+import 'package:best_self/app/UI/controllers/user_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 AppBar appBarHome(Color color) {
     return AppBar(
@@ -27,7 +29,11 @@ AppBar appBarHome(Color color) {
       ),
       centerTitle: false,
       actions: [
-        const Text('0', style: TextStyle(fontSize: 20, color: Colors.white)),
+        Obx(() => Text(
+              '${Get.find<UserController>().coinsEarned.value}',
+              style: const TextStyle(fontSize: 20, color: Colors.white),
+            )),
+        
         IconButton(
           onPressed: () {},
           icon: const Icon(Icons.monetization_on, color: Colors.white),

@@ -23,10 +23,8 @@ class _CustomHabitState extends State<CustomHabit> {
     final IconPickerIcon? icon = await FlutterIconPicker.showIconPicker(
       context,
       configuration: const SinglePickerConfiguration(
-        iconPackModes: [IconPack.material,IconPack.cupertino],
-
+        iconPackModes: [IconPack.material, IconPack.cupertino],
         title: Text('Seleccione un ícono'),
-
       ),
     );
 
