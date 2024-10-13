@@ -1,9 +1,32 @@
 import 'package:best_self/app/UI/pages/create_habit/create_habit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:confetti/confetti.dart';
 
-class BottonNavigationBarCustomer extends StatelessWidget {
-  BottonNavigationBarCustomer({super.key});
+class BottonNavigationBarCustomer extends StatefulWidget {
+  const BottonNavigationBarCustomer({super.key});
+
+  @override
+  _BottonNavigationBarCustomerState createState() =>
+      _BottonNavigationBarCustomerState();
+}
+
+class _BottonNavigationBarCustomerState
+    extends State<BottonNavigationBarCustomer> {
+  late ConfettiController _confettiController;
+
+  @override
+  void initState() {
+    super.initState();
+    _confettiController =
+        ConfettiController(duration: const Duration(seconds: 1));
+  }
+
+  @override
+  void dispose() {
+    _confettiController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +43,7 @@ class BottonNavigationBarCustomer extends StatelessWidget {
           ),
           Center(
               heightFactor: 0.6,
-                child: FloatingActionButton(
+              child: FloatingActionButton(
                 shape: CircleBorder(
                   side: BorderSide(color: theme.primaryColor, width: 1.0),
                 ),
@@ -56,7 +79,14 @@ class BottonNavigationBarCustomer extends StatelessWidget {
                 ),
                 IconButton(
                   icon: const Icon(Icons.stars),
-                  onPressed: () {},
+                  onPressed: () {
+                    _confettiController.play();
+                    showCongratulationDialog(
+                      context,
+                      'Felicitaciones, has obtenido la medalla de bronce',
+                      'assets/achievements/bronce.png',
+                    );
+                  },
                   color: Colors.white,
                 ),
                 IconButton(
@@ -66,10 +96,52 @@ class BottonNavigationBarCustomer extends StatelessWidget {
                 ),
               ],
             ),
-          )
+          ),
         ],
       ),
     );
+  }
+
+  void showCongratulationDialog(
+      BuildContext context, String message, String imagePath) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            AlertDialog(
+              title: Text('¡Felicitaciones!'),
+              content: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset(imagePath),
+                  SizedBox(height: 10),
+                  Text(message),
+                ],
+              ),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  child: Text('Cerrar'),
+                ),
+              ],
+            ),
+            ConfettiWidget(
+              confettiController: _confettiController,
+              blastDirection: -3.14 / 2, // hacia arriba
+              emissionFrequency: 0.05,
+              numberOfParticles: 20,
+              gravity: 0.1,
+            ),
+          ],
+        );
+      },
+    ).then((_) {
+      _confettiController.stop();
+    });
   }
 }
 
