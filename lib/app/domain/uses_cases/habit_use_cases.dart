@@ -22,5 +22,9 @@ class HabitUseCases {
   Future<void> updateHabit(HabitEntity habit) async {
     await _habitRepository.updateHabit(habit);
   }
+
+  Future<List<HabitEntity>> getPredefinedHabits() async {
+    return await _habitRepository.getPredefinedHabits();
+  }
   
 }

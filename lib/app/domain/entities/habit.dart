@@ -1,13 +1,18 @@
-class HabitEntity {
-  final String title;
-  final DateTime time;
-  final bool isCompleted;
-  final String id;
+import 'package:flutter/material.dart';
 
-  const HabitEntity({
+class HabitEntity {
+  final IconData icon;
+  final String title;
+  final int numeroDeVeces;
+  final String id;
+  bool isCompleted;
+  int numeroDeVecesCompletadas = 0;
+
+  HabitEntity({
+    required this.icon,
     required this.id,
     required this.title,
-    required this.time,
+    required this.numeroDeVeces,
     this.isCompleted = false,
   });
 

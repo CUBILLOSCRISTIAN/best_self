@@ -5,4 +5,5 @@ abstract class IHabitRepository {
   Future<void> addHabit(HabitEntity habit);
   Future<void> updateHabit(HabitEntity habit);
   Future<void> deleteHabit(HabitEntity habit);
+  Future<List<HabitEntity>> getPredefinedHabits();
 }

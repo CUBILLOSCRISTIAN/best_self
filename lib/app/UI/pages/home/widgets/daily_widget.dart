@@ -44,7 +44,7 @@ class _DailyPageState extends State<DailyPage> {
                           children: [
                             Text(
                               days[index]['label'],
-                              style: const TextStyle(fontSize: 12),
+                              style: const TextStyle(fontSize: 12, color: Colors.white),
                             ),
                             const SizedBox(
                               height: 10,
