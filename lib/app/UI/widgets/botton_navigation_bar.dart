@@ -85,7 +85,9 @@ class _BottonNavigationBarCustomerState
                 ),
                 IconButton(
                   icon: const Icon(Icons.person),
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.toNamed('/user-config');
+                  },
                   color: Colors.white,
                 ),
               ],
