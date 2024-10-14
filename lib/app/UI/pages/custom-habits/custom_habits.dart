@@ -4,8 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconpicker/Models/configuration.dart';
 import 'package:flutter_iconpicker/Models/icon_pack.dart';
 import 'package:flutter_iconpicker/Models/icon_picker_icon.dart';
-import 'package:flutter_iconpicker/flutter_iconpicker.dart'
-    as FlutterIconPicker;
+import 'package:flutter_iconpicker/flutter_iconpicker.dart' as FlutterIconPicker;
 import 'package:get/get.dart';
 
 class CustomHabit extends StatefulWidget {
