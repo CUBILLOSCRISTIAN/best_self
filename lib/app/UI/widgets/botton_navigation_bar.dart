@@ -80,12 +80,6 @@ class _BottonNavigationBarCustomerState
                 IconButton(
                   icon: const Icon(Icons.stars),
                   onPressed: () {
-                    _confettiController.play();
-                    showCongratulationDialog(
-                      context,
-                      'Felicitaciones, has obtenido la medalla de bronce',
-                      'assets/achievements/bronce.png',
-                    );
                   },
                   color: Colors.white,
                 ),
@@ -100,48 +94,6 @@ class _BottonNavigationBarCustomerState
         ],
       ),
     );
-  }
-
-  void showCongratulationDialog(
-      BuildContext context, String message, String imagePath) {
-    showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return Stack(
-          alignment: Alignment.center,
-          children: [
-            AlertDialog(
-              title: Text('¡Felicitaciones!'),
-              content: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Image.asset(imagePath),
-                  SizedBox(height: 10),
-                  Text(message),
-                ],
-              ),
-              actions: [
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text('Cerrar'),
-                ),
-              ],
-            ),
-            ConfettiWidget(
-              confettiController: _confettiController,
-              blastDirection: -3.14 / 2, // hacia arriba
-              emissionFrequency: 0.05,
-              numberOfParticles: 20,
-              gravity: 0.1,
-            ),
-          ],
-        );
-      },
-    ).then((_) {
-      _confettiController.stop();
-    });
   }
 }
 

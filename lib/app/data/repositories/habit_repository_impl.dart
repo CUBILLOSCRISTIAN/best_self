@@ -5,7 +5,7 @@ import 'package:best_self/app/domain/repositories/i_habit_repository.dart';
 
 class HabitRepositoryImpl implements IHabitRepository {
   final IRemoteHabitSource remoteHabitSource;
-  final ILocalHabitSource localHabitSource; 
+  final ILocalHabitSource localHabitSource;
 
   HabitRepositoryImpl(this.remoteHabitSource, this.localHabitSource);
 
@@ -22,16 +22,14 @@ class HabitRepositoryImpl implements IHabitRepository {
   }
 
   @override
-  Future<List<HabitEntity>> getHabits() {
-    return localHabitSource.getHabits();
+  Future<Map<String, List<HabitEntity>>> getHabits(String day) {
+    return localHabitSource.getHabits(day);
   }
 
   @override
-  Future<void> updateHabit(HabitEntity habit) {
-    localHabitSource.updateHabit(habit);
-    if(habit.numeroDeVecesCompletadas == habit.numeroDeVeces){
-      
-    }
+  Future<void> updateHabit(String day, HabitEntity habit) {
+    localHabitSource.updateHabit(day, habit);
+    if (habit.numeroDeVecesCompletadas == habit.numeroDeVeces) {}
     return Future.value();
   }
 

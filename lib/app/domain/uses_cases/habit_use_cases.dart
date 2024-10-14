@@ -15,16 +15,15 @@ class HabitUseCases {
     await _habitRepository.deleteHabit(habit);
   }
 
-  Future<List<HabitEntity>> getHabits() async {
-    return await _habitRepository.getHabits();
+  Future<Map<String, List<HabitEntity>>> getHabits(String day) async {
+    return await _habitRepository.getHabits(day);
   }
 
-  Future<void> updateHabit(HabitEntity habit) async {
-    await _habitRepository.updateHabit(habit);
+  Future<void> updateHabit(String day, HabitEntity habit) async {
+    await _habitRepository.updateHabit(day, habit);
   }
 
   Future<List<HabitEntity>> getPredefinedHabits() async {
     return await _habitRepository.getPredefinedHabits();
   }
-  
 }

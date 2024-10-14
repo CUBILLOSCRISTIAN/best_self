@@ -1,6 +1,7 @@
+import 'package:best_self/app/UI/controllers/habit_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-import 'package:best_self/app/UI/json/day_month.dart';
 
 
 
@@ -12,14 +13,15 @@ class DailyPage extends StatefulWidget {
 }
 
 class _DailyPageState extends State<DailyPage> {
-  int activeDay = 0;
+  
   @override
   Widget build(BuildContext context) {
     return getBody();
   }
 
   Widget getBody() {
-    
+    HabitController habitController = Get.find<HabitController>();
+    int activeDay = int.parse(habitController.dayController.value);
     var color = Theme.of(context);
     return SingleChildScrollView(
       child: Container(
@@ -34,11 +36,13 @@ class _DailyPageState extends State<DailyPage> {
                   children: List.generate(days.length, (index) {
                     return GestureDetector(
                       onTap: () {
+                        
                         setState(() {
                           activeDay = index;
+                          habitController.updateDayController('$activeDay');
                         });
                       },
-                      child: Container(
+                      child: SizedBox(
                         width: (MediaQuery.of(context).size.width - 40) / 7,
                         child: Column(
                           children: [
@@ -85,3 +89,13 @@ class _DailyPageState extends State<DailyPage> {
     );
   }
 }
+
+List days = [
+  {"label": "Sun", "day": "28"},
+  {"label": "Mon", "day": "29"},
+  {"label": "Tue", "day": "30"},
+  {"label": "Wed", "day": "1"},
+  {"label": "Thu", "day": "2"},
+  {"label": "Fri", "day": "3"},
+  {"label": "Sat", "day": "4"},
+];

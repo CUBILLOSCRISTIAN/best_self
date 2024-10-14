@@ -44,7 +44,7 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              Positioned(
+              const Positioned(
                   bottom: 0, left: 0, child: BottonNavigationBarCustomer())
             ],
           ),

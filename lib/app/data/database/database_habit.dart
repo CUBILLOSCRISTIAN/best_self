@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 
 import '../../domain/entities/habit.dart';
 
-List<HabitEntity> habitDatabase = [
-];
+Map<String, List<HabitEntity>> habitDatabase = {
+  '0': [],
+  '1': [],
+  '2': [],
+  '3': [],
+  '4': [],
+  '5': [],
+  '6': []
+};
 
 List<HabitEntity> predefinedHabits = [
   HabitEntity(

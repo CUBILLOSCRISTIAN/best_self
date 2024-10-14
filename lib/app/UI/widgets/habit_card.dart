@@ -1,4 +1,6 @@
 import 'package:best_self/app/UI/controllers/habit_controller.dart';
+import 'package:best_self/app/UI/controllers/user_controller.dart';
+import 'package:best_self/app/UI/widgets/achivements.dart';
 import 'package:best_self/app/domain/entities/habit.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,6 +15,7 @@ class HabitCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    UserController userController = Get.find<UserController>();
     final color = Theme.of(context);
     var progress = habit.numeroDeVecesCompletadas / habit.numeroDeVeces;
 
@@ -56,6 +59,44 @@ class HabitCard extends StatelessWidget {
                 onPressed: () {
                   Get.find<HabitController>()
                       .incrementarVecesCompletadas(habit);
+                  if (habit.numeroDeVecesCompletadas == habit.numeroDeVeces) {
+                    Get.defaultDialog(
+                      title: '¡Habito completado!',
+                      middleText:
+                          '¡Has completado el habito de ${habit.title}!',
+                        textConfirm: 'Cerrar',
+                        confirmTextColor: Colors.white,
+                        onConfirm: () {
+                        Get.back();
+                        },
+                    );
+
+                    switch (userController.completedHabits.value) {
+                      case 10:
+                        showDialog(
+                            context: context,
+                            builder: (_) => const Achivements(
+                                tipeAchievement: 'Bronce',
+                                imagePath: 'assets/achievements/bronce.png'));
+                        break;
+
+                      case 20:
+                        showDialog(
+                            context: context,
+                            builder: (_) => const Achivements(
+                                tipeAchievement: 'Plata',
+                                imagePath: 'assets/achievements/plata.png'));
+                        break;
+
+                      case 30:
+                        showDialog(
+                            context: context,
+                            builder: (_) => const Achivements(
+                                tipeAchievement: 'Oro',
+                                imagePath: 'assets/achievements/oro.png'));
+                        break;
+                    }
+                  }
                 },
                 icon: Icon(
                   Icons.add_circle_outline_outlined,

@@ -4,7 +4,7 @@ class HabitEntity {
   final IconData icon;
   final String title;
   final int numeroDeVeces;
-  final String id;
+  String id;
   bool isCompleted;
   int numeroDeVecesCompletadas = 0;
 
