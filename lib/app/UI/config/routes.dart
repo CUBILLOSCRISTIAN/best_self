@@ -1,7 +1,7 @@
+import 'package:best_self/app/UI/pages/home/splas_screen.dart';
 import 'package:get/get.dart';
 
 import '../pages/home/home_page.dart';
-import '../pages/shop/shop.dart';
 import '../pages/user-config/user_config.dart';
 
 class AppRoutes {
@@ -11,7 +11,7 @@ class AppRoutes {
 
   static List<GetPage> routes = [
     GetPage(name: '/home', page: () => HomePage()),
-    GetPage(name: '/shop', page: () => Shop()),
+    GetPage(name: '/splash', page: () => SplashScreen()),
     GetPage(name: '/user-config', page: () => UserConfigPage()),
   ];
 }

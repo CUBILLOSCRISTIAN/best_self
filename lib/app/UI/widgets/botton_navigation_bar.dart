@@ -67,21 +67,8 @@ class _BottonNavigationBarCustomerState
                   onPressed: () {},
                   color: theme.unselectedWidgetColor,
                 ),
-                IconButton(
-                  icon: const Icon(Icons.shopping_cart),
-                  onPressed: () {
-                    Get.toNamed('/shop');
-                  },
-                  color: Colors.white,
-                ),
                 Container(
                   width: size.width * 0.20,
-                ),
-                IconButton(
-                  icon: const Icon(Icons.stars),
-                  onPressed: () {
-                  },
-                  color: Colors.white,
                 ),
                 IconButton(
                   icon: const Icon(Icons.person),

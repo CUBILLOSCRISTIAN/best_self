@@ -10,10 +10,11 @@ class MascotaScreen extends StatefulWidget {
 class _MascotaScreenState extends State<MascotaScreen> {
   final List<String> _messages = [
     'Soy tu compañero, PO, y estoy aquí para ayudarte.',
-    '¿Tienes hábitos?',
-    'Si?, ¡Genial! Si no, ¡No te preocupes! ¡Podemos crearlos juntos!',
-    '¡Vamos a crear un hábito juntos!',
-    'Empieza por hacer click en el botón de abajo.',
+    '¡Puedes lograr todo lo que te propongas!',
+    'Cada día es una nueva oportunidad para ser mejor.',
+    'No te rindas, los grandes logros llevan tiempo.',
+    'Confía en ti mismo y en tus capacidades.',
+    'La perseverancia es la clave del éxito.',
 
   ];
 
