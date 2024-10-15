@@ -1,16 +1,71 @@
-# best_self
+GitHub Copilot: # BestSelf
 
-A new Flutter project.
+BestSelf es una aplicación móvil diseñada para ayudarte a monitorear y mejorar tus hábitos diarios. La aplicación te permite crear, actualizar y seguir tus hábitos, proporcionando una interfaz amigable y motivacional.
 
-## Getting Started
+## Características
 
-This project is a starting point for a Flutter application.
+- **Monitoreo de Hábitos**: Crea y sigue tus hábitos diarios.
+- **Interfaz de Usuario Intuitiva**: Diseño limpio y fácil de usar.
+- **Mensajes Motivacionales**: Recibe mensajes motivacionales para mantenerte enfocado.
+- **Navegación Fácil**: Barra de navegación personalizada para un acceso rápido a las funciones principales.
 
-A few resources to get you started if this is your first Flutter project:
+## Tecnologías Utilizadas
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- **Flutter**: Framework para el desarrollo de aplicaciones móviles.
+- **GetX**: Gestión de estado y navegación.
+- **Confetti**: Efectos visuales para mejorar la experiencia del usuario.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Estructura del Proyecto
+
+```plaintext
+lib/
+├── app/
+│   ├── UI/
+│   │   ├── config/
+│   │   │   └── routes.dart
+│   │   ├── controllers/
+│   │   │   ├── habit_controller.dart
+│   │   │   └── user_controller.dart
+│   │   ├── pages/
+│   │   │   ├── home/
+│   │   │   │   ├── home_page.dart
+│   │   │   │   ├── widgets/
+│   │   │   │   │   ├── daily_widget.dart
+│   │   │   │   │   └── mascota_screen.dart
+│   │   │   ├── create_habit/
+│   │   │   │   └── create_habit.dart
+│   │   │   ├── splash_screen.dart
+│   │   │   └── user-config/
+│   │   │       └── user_config.dart
+│   │   ├── widgets/
+│   │   │   ├── app_bar.dart
+│   │   │   ├── botton_navigation_bar.dart
+│   │   │   └── habit_card.dart
+│   ├── data/
+│   │   ├── local/
+│   │   │   ├── database_habit.dart
+│   │   │   ├── i_local_habit_source.dart
+│   │   │   └── loca_habit_source.dart
+│   │   ├── remote/
+│   │   │   ├── i_remote_habit_source.dart
+│   │   │   └── remote_habit_source.dart
+│   │   ├── repositories/
+│   │   │   └── habit_repository_impl.dart
+│   ├── domain/
+│   │   ├── entities/
+│   │   │   └── habit.dart
+│   │   ├── repositories/
+│   │   │   └── i_habit_repository.dart
+│   │   └── uses_cases/
+│   │       └── habit_use_cases.dart
+├── main.dart
+```
+
+
+## DEMO
+
+Link del demo [Drive](https://github.com/CUBILLOSCRISTIAN)
+
+---
+
+¡Gracias por usar BestSelf! Esperamos que te ayude a alcanzar tus metas y mejorar tus hábitos diarios.
