@@ -16,12 +16,6 @@ class LocalHabitSource implements ILocalHabitSource {
   Future<Map<String, List<HabitEntity>>> getHabits(String day) {
     final habitsForDay = habitDatabase[day] ?? [];
 
-    habitDatabase.forEach((key, value) {
-      print('Habits for day $key:');
-      value.forEach((element) {
-        print(element.id);
-      });
-    });
     return Future.value({day: habitsForDay});
   }
 
@@ -42,7 +36,8 @@ class LocalHabitSource implements ILocalHabitSource {
     habitDatabase.forEach((key, value) {
       final newHabit = HabitEntity(
         id: generateRandomId(),
-        title: habit.title, icon: habit.icon,
+        title: habit.title,
+        icon: habit.icon,
         numeroDeVeces: habit.numeroDeVeces,
       );
       value.add(newHabit);
