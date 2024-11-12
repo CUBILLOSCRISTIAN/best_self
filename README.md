@@ -1,4 +1,4 @@
-GitHub Copilot: # BestSelf
+ # BestSelf
 
 BestSelf es una aplicación móvil diseñada para ayudarte a monitorear y mejorar tus hábitos diarios. La aplicación te permite crear, actualizar y seguir tus hábitos, proporcionando una interfaz amigable y motivacional.
 
