@@ -69,3 +69,32 @@ Link del demo [Drive](https://drive.google.com/file/d/1OevE8vCmF_UuYGNyntKTpl-D7
 ---
 
 ¡Gracias por usar BestSelf! Esperamos que te ayude a alcanzar tus metas y mejorar tus hábitos diarios.
+
+## Link Pruebas de actividades
+
+**Cristian Cubillos:**
+
+- Data base:
+![DataBase](./assets//comprobantes_actividad/CristianCubillos/CristianCubillosDataBase.png)
+
+
+- Web Service:
+![WebService](./assets//comprobantes_actividad/CristianCubillos/CristianCubillosWebService.png)
+
+**Daniel Olivares:**
+
+- Data base:
+![DataBase](./assets//comprobantes_actividad/DanielOlivares/)
+
+
+- Web Service:
+![WebService](./assets//comprobantes_actividad/DanielOlivares/)
+
+**Samuel Constante:**
+
+- Data base:
+![DataBase](./assets//comprobantes_actividad/SamuelConstante/database.png)
+
+
+- Web Service:
+![WebService](./assets//comprobantes_actividad/SamuelConstante/webservice.png)
