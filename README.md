@@ -84,11 +84,11 @@ Link del demo [Drive](https://drive.google.com/file/d/1OevE8vCmF_UuYGNyntKTpl-D7
 **Daniel Olivares:**
 
 - Data base:
-![DataBase](./assets//comprobantes_actividad/DanielOlivares/)
+![DataBase](./assets//comprobantes_actividad/DanielOlivares/database.png)
 
 
 - Web Service:
-![WebService](./assets//comprobantes_actividad/DanielOlivares/)
+![WebService](./assets//comprobantes_actividad/DanielOlivares/webservices.png)
 
 **Samuel Constante:**
 
